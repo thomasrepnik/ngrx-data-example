@@ -15,7 +15,7 @@ import { Coffee } from '../coffee';
 @Injectable()
 export class CoffeeDataService extends DefaultDataService<Coffee> {
   constructor(http: HttpClient, httpUrlGenerator: HttpUrlGenerator, logger: Logger) {
-    super('Hero', http, httpUrlGenerator);
+    super('Coffee', http, httpUrlGenerator);
     console.log('Created custom Hero EntityDataService');
   }
 

@@ -10,6 +10,7 @@ import { StoreModule } from '@ngrx/store';
 import { entityConfig } from './../entity-metadata';
 import { EntityStoreModule } from './store/entity-store.module'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,13 +18,13 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     EntityDataModule.forRoot(entityConfig),
     EntityStoreModule,
     StoreDevtoolsModule.instrument({ maxAge: 25 })
-
   ],
   providers: [],
   bootstrap: [AppComponent]
