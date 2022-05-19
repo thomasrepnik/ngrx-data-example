@@ -26,6 +26,12 @@ export class CoffeeDataService extends DefaultDataService<Coffee> {
     );
   }
 
+  load(): Observable<Coffee[]> {
+    console.log('lets fetch...')
+    return this.http.get<Coffee[]>('https://random-data-api.com/api/coffee/random_coffee?size=10').pipe(
+      map((res: any) => res)
+    );
+  }
 
 
 }

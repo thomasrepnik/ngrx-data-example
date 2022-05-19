@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EntityCollectionService, EntityCollectionServiceFactory } from '@ngrx/data';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { first, tap } from 'rxjs/operators';
 import { Coffee } from './coffee';
 import { CoffeeEntityService } from './coffee-entity.service';
 import { CoffeeDataService } from './store/coffee.service';
@@ -40,10 +40,10 @@ export class AppComponent implements OnInit {
 
   fetchData(): void {
     if (this.cacheClearingEnabled) {
-      this.coffeeEntityService.clearCache();
+      this.coffeeEntityService.load();
+    } else {
+      this.coffeeEntityService.getAll();
     }
-
-    this.coffeeEntityService.getAll();
   }
 
 }
