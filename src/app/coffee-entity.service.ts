@@ -11,7 +11,6 @@ import { Coffee } from './coffee';
 export class CoffeeEntityService extends EntityCollectionServiceBase<Coffee> {
     constructor(serviceElementsFactory: EntityCollectionServiceElementsFactory) {
         super('Coffee', serviceElementsFactory);
-        this.add
     }
 
 

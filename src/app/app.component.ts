@@ -40,10 +40,24 @@ export class AppComponent implements OnInit {
 
   fetchData(): void {
     if (this.cacheClearingEnabled) {
-      this.coffeeEntityService.load();
+      //this.coffeeEntityService.load();
+
+      this.coffeeEntityService.getAll().subscribe(entities => {
+        this.coffeeEntityService.addAllToCache(entities);
+      })
     } else {
       this.coffeeEntityService.getAll();
     }
+  }
+
+  sendData(): void {
+    const c = new Coffee();
+    c.id = 777
+    c.blend_name = 'restretto'
+    c.intensifier = 'sugar'
+    c.notes = 'swiss blend'
+    c.variety = 'not needed'
+    this.coffeeEntityService.add(c);
   }
 
 }

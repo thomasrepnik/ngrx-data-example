@@ -8,8 +8,8 @@ import {
   QueryParams
 } from '@ngrx/data';
 
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 import { Coffee } from '../coffee';
 
 @Injectable()
@@ -28,8 +28,12 @@ export class CoffeeDataService extends DefaultDataService<Coffee> {
 
   load(): Observable<Coffee[]> {
     console.log('lets fetch...')
-    return this.http.get<Coffee[]>('https://random-data-api.com/api/coffee/random_coffee?size=10').pipe(
-      map((res: any) => res)
+    return this.http.get<Coffee[]>('https://random-data-api.com/api/coffee/random_coffee?size=10');
+  }
+
+  add(entity: Coffee): Observable<Coffee> {
+    return this.http.post<Coffee>('https://enfl02znronrg.x.pipedream.net', entity).pipe(
+      switchMap(e => of({ ...entity, id: 888 }))
     );
   }
 

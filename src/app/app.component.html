@@ -1,6 +1,7 @@
 <input name="filtering" type="checkbox" (change)="filterToggled($event)"> Filtered
 <input name="clearing" type="checkbox" [(ngModel)]="cacheClearingEnabled"> Clear Cache before Fetch
 <button (click)="fetchData()">Fetch new Data</button>
+<button (click)="sendData()">Send Data</button>
 
 
 <table>
