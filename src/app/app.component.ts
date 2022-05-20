@@ -1,12 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { EntityCollectionService, EntityCollectionServiceFactory } from '@ngrx/data';
-import { select, Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { first, tap } from 'rxjs/operators';
-import { Coffee } from './coffee';
-import { CoffeeEntityService } from './coffee-entity.service';
-import { CoffeeDataService } from './store/coffee.service';
-import { selectCoffeeByLowId } from './selectors/coffee.selector';
+import {Component, OnInit} from '@angular/core';
+import {select, Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import {Coffee} from './coffee';
+import {CoffeeEntityService} from './coffee-entity.service';
+import {selectCoffeeByLowId} from './selectors/coffee.selector';
 
 @Component({
   selector: 'app-root',
@@ -23,8 +20,9 @@ export class AppComponent implements OnInit {
   constructor(private coffeeEntityService: CoffeeEntityService, private store: Store) {
 
   }
+
   ngOnInit(): void {
-    console.log('read data...')
+    console.log('init')
     this.entities$ = this.coffeeEntityService.entities$;
     this.fetchData();
   }
