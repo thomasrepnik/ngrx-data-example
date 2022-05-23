@@ -35,6 +35,8 @@ export class CoffeeDataService extends DefaultDataService<Coffee> {
     return this.http.post<Coffee>('https://enfl02znronrg.x.pipedream.net', entity).pipe(
       switchMap(e => of({ ...entity, id: 888 }))
     );
+
+    //Check requests at: https://requestbin.com/r/enfl02znronrg
   }
 
 
